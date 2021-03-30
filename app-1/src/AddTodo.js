@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-function AddTodo() {
+function AddTodo(props) {
     const [userTodo, setUserTodo] = useState('');
 
-    function addUserTodo() {
-
+    function handleAdd() {
+        props.addTodo(userTodo);
+        setUserTodo('')
     }
 
     return (
         <div>
             <input placeholder='your todo' value={userTodo} onChange={event => setUserTodo(event.target.value)} />
-            <button onClick={addUserTodo}>Add Todo</button>
+            <button onClick={handleAdd}>Add Todo</button>
         </div>
     )
 }
+
+export default AddTodo;
